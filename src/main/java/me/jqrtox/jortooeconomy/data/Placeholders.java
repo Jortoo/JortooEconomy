@@ -19,13 +19,14 @@ public class Placeholders extends PlaceholderExpansion {
 
     @Override
     public @NotNull String getVersion() {
-        return "1";
+        return "1.1";
     }
     @Override
     public @Nullable String onRequest(OfflinePlayer player, @NotNull String params) {
         double money = Economy.getBalance(player);
+        String formattedMoney = String.format("%,.0f", money);
         return switch (params) {
-            case "money" -> money + "";
+            case "money" -> formattedMoney + "";
             default -> "";
         };
     }
