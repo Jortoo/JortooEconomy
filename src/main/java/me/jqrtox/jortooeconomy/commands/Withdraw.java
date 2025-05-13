@@ -1,5 +1,6 @@
 package me.jqrtox.jortooeconomy.commands;
 
+import me.jqrtox.jortooeconomy.JortooEconomy;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Material;
@@ -13,7 +14,6 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.NotNull;
-import poa.poalib.Economy.Economy;
 import poa.poalib.shaded.NBT;
 
 import java.util.ArrayList;
@@ -37,7 +37,7 @@ public class Withdraw implements CommandExecutor {
             player.sendRichMessage(PayCommand.prefix + "Minimum has to be <green>100$");
             return false;
         }
-        if (Economy.getBalance(player) < amount) {
+        if (JortooEconomy.economy.getBalance(player) < amount) {
             player.sendRichMessage(PayCommand.prefix + "You do not have enough money");
             return false;
         }
@@ -46,7 +46,7 @@ public class Withdraw implements CommandExecutor {
             return false;
         }
 
-        Economy.withdrawPlayer(player, amount);
+        JortooEconomy.economy.withdrawPlayer(player, amount);
         player.getInventory().addItem(moneyNote(amount));
         player.sendRichMessage(PayCommand.prefix + "You have withdrawn <green>" + formattedAmount + "$");
         player.playSound(player, Sound.ENTITY_ITEM_PICKUP, 1L, 1L);

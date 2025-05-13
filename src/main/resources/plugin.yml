@@ -2,7 +2,8 @@ name: JortooEconomy
 version: '${project.version}'
 main: me.jqrtox.jortooeconomy.JortooEconomy
 api-version: '1.21'
-
+softdepend:
+  - PoaLib
 commands:
   pay:
   withdraw:

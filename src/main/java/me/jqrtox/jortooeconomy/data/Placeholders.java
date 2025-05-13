@@ -1,15 +1,16 @@
 package me.jqrtox.jortooeconomy.data;
 
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
+import me.jqrtox.jortooeconomy.JortooEconomy;
+import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import poa.poalib.Economy.Economy;
 
 public class Placeholders extends PlaceholderExpansion {
     @Override
     public @NotNull String getIdentifier() {
-        return "jortoo";
+        return "jortoo-eco";
     }
 
     @Override
@@ -23,10 +24,10 @@ public class Placeholders extends PlaceholderExpansion {
     }
     @Override
     public @Nullable String onRequest(OfflinePlayer player, @NotNull String params) {
-        double money = Economy.getBalance(player);
+        double money = JortooEconomy.economy.getBalance(player);
         String formattedMoney = String.format("%,.0f", money);
         return switch (params) {
-            case "money" -> formattedMoney + "";
+            case "money" -> formattedMoney;
             default -> "";
         };
     }

@@ -4,7 +4,6 @@ import me.jqrtox.jortooeconomy.CustomSkullUtil;
 import me.jqrtox.jortooeconomy.JortooEconomy;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
-import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

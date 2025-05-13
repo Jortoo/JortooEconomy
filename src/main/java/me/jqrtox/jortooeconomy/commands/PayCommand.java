@@ -1,15 +1,13 @@
 package me.jqrtox.jortooeconomy.commands;
 
 import lombok.Getter;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.minimessage.MiniMessage;
+import me.jqrtox.jortooeconomy.JortooEconomy;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
-import poa.poalib.Economy.Economy;
 
 
 public class PayCommand implements CommandExecutor {
@@ -42,15 +40,15 @@ public class PayCommand implements CommandExecutor {
             return false;
         }
 
-        if (Economy.getBalance(player) < moneyAmount) {
+        if (JortooEconomy.economy.getBalance(player) < moneyAmount) {
             player.sendRichMessage(prefix + "You do not have enough money");
             return false;
         }
 
-        Economy.depositPlayer(target, moneyAmount);
+        JortooEconomy.economy.depositPlayer(target, moneyAmount);
         target.sendRichMessage(prefix + "<yellow>" + player.getName() + " <white>has sent you <green>" + formattedAmount + "$");
         player.sendRichMessage(prefix + "You have sent <yellow>" + target.getName() + " <green>" + formattedAmount + "$");
-        Economy.withdrawPlayer(player, moneyAmount);
+        JortooEconomy.economy.withdrawPlayer(player, moneyAmount);
 
         return true;
     }
